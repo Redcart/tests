@@ -34,6 +34,5 @@ jobs:
     - name: Test with pytest
       env:
         test: ${{ secrets.MY_SECRET }}
-      run: echo "Hello !"
-           python script.py
+      run: python script.py
         
