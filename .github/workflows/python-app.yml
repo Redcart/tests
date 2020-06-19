@@ -34,5 +34,15 @@ jobs:
     - name: Test with pytest
       env:
         test: ${{ secrets.MY_SECRET }}
-      run: python script.py
+      run: |
+        python script.py
+    - name: Test with Docker
+      env:
+        username:  ${{ secrets.DOCKER_USERNAME }}
+        password: ${{ secrets.DOCKER_PASSWORD }}
+      run: |
+        docker login --username=$username --password=$password
+        docker build -t $username/test:v1
+        docker push $username/test:v1
+        
         
